@@ -68,7 +68,7 @@ app.get('/start-simulation', (req, res) => {
 // チャットエンドポイント
 app.post('/chat', async (req, res) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro", generationConfig: { maxOutputTokens: 300 } });
+    const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig: { maxOutputTokens: 300 } });
     const history = req.body.history || [];
     const message = req.body.message;
 
@@ -94,7 +94,7 @@ app.post('/chat', async (req, res) => {
 // 評価エンドポイント
 app.post('/evaluate', async (req, res) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const history = req.body.history || [];
 
     const historyText = history.map(msg => `${msg.role === 'ai' ? 'ゲームマスター' : 'あなた'}: ${msg.text}`).join('\n');
